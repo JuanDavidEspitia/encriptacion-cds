@@ -15,7 +15,8 @@ object EncriptedJob
       .option("header", "true")
       .option("mergeSchema", "true")
       .option("delimiter", ";")
-      .csv("input/")
+      .csv("input/security-dataprueba-bdb.csv")
+    dfSecurity.show(false)
 
 
 
