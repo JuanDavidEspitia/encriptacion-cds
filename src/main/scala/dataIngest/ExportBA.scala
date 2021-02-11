@@ -2,7 +2,7 @@ package dataIngest
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.functions.{concat, sha2, trim}
+import org.apache.spark.sql.functions.{concat, regexp_extract, sha2, trim}
 
 object ExportBA
 {
@@ -62,25 +62,34 @@ object ExportBA
     //Creamos un Dataframe Vacio
     var df = spark.emptyDataFrame
     //Creamos una lista vacia
-    var dm  = List[String]()
+    var list  = List[String]()
 
-    val selectColumns = dfSecurity.columns.toSeq
-    val selectColumns2 = dfSecurity.columns.toList
-    println(selectColumns)
+    val SeqColumns = dfSecurity.columns.toSeq
+    val ListColumns = dfSecurity.columns.toList
+    println(SeqColumns)
     println("Conversion a Lista")
-    println(selectColumns2)
+    println(ListColumns)
     /**
-     * Convertimos de Seq a Dataframe
+     * Convertimos la lista a Dataframe
      * */
+    import spark.implicits._
+    var dfColumns = ListColumns.toDF()
+    dfColumns.show(false)
+    /**
+     * Convertimos la lista a RDD
+     * */
+    val rdd = spark.sparkContext.parallelize(ListColumns)
 
+    //dfColumns.select(dfColumns.col("value"), regexp_extract())
+    val singleReg = """HASH_*""".r
+    //val validSingleRecords = rdd.filter()
 
-
-
-
-
-
-
-
+    /**
+     * Filtramos los registros que cumplan con la condicion de HASH
+     * */
+    val dffilter = dfColumns.filter($"value" rlike "HASH_*")
+    dffilter.show(false)
+    println(dffilter.count())
 
 
 
