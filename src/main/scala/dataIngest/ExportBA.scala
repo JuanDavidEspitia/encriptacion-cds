@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 
 import org.apache.log4j.{Level, Logger}
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.sql.functions.{concat, regexp_extract, sha2, trim}
 
 object ExportBA
@@ -16,6 +16,8 @@ object ExportBA
       .master("local[*]")
       .appName("Caso de Uso Export BA")
       .getOrCreate()
+    // Creamos la variable de tiempo, para calcular cuando se demora todo el procesp
+    val startTimeMillis = System.currentTimeMillis()
 
     /**
      * Cargamos el Archivo CSV en un Dataframe ->  dfSecurity
@@ -36,14 +38,62 @@ object ExportBA
     /**
      * Funcion que obtiene la fecha para nombrar el archivo de salida
      * */
-    def getDataName(): String = {
+    def getFileName(): String = {
       val format = new SimpleDateFormat("YYYY-MM-dd_HHmmss")
       var fecha = format.format(Calendar.getInstance().getTime)
       fecha.replace("-", "")
     }
     // Capturamos la fecha en una variable
-    val fecha = getDataName()
+    val fecha = getFileName()
     println("Fecha: ", fecha)
+
+    /**
+     * Metodo para guardar en formato parquet
+     * */
+    def saveAsParquet(df: DataFrame, fecha: String): Unit =
+    {
+      try {
+        if (!df.head(1).isEmpty) {
+          df.repartition(1).write
+            .option("delimiter", "|")
+            .mode("overwrite")
+            .parquet(s"output/parquet/table_security_${fecha}/")
+          println("OK  -->  Se guardo Satisfactoriamente en formato Parquet")
+        } else {
+          println("La cantidad de registros son: " + df.count())
+          println("Los parametros estan vacios")
+        }
+      }catch {
+        case e:Exception =>
+          println(e)
+      }
+    }
+
+
+    /**
+     * Metodo para guardar un dataframe en formato CSV
+     * */
+    def saveAsCSV(df: DataFrame, fecha: String): Unit =
+      {
+        try {
+          if (!df.head(1).isEmpty) {
+              df.repartition(1).write
+                .format("com.databricks.spark.csv")
+                .option("charset", "UTF-8")
+                .option("header", "true")
+                .mode("overwrite")
+                .save(s"output/csv/table_security_$fecha/")
+          } else {
+            println("La cantidad de registros son: " + df.count())
+            println("Los parametros estan vacios")
+          }
+        }catch {
+          case e:Exception =>
+            println(e)
+        }
+      }
+
+
 
 
     /**
@@ -71,12 +121,24 @@ object ExportBA
     println("---------------        IMPRIMIMOS EL DATAFRAME CON LOS CAMPOS DE PROVEEDOR HASHEADOS      ---------------")
     dfSecurity.show(5)
 
+    //Creamos un Dataframe Vacio
+    var dfEmpty = spark.emptyDataFrame
+
+    /**
+     * Llamamos al metodo de guardar en formato Parquet
+     * */
+      saveAsParquet(dfEmpty, fecha)
+
+    /**
+     * Llamamos al metodo de guardar en formato CSV
+     * */
+      saveAsCSV(dfSecurity, fecha)
+
+
     /**
      * Capturamos las columnas en un Dataframe o Array
      * */
     dfSecurity.printSchema()
-    //Creamos un Dataframe Vacio
-    var df = spark.emptyDataFrame
     //Creamos una lista vacia
     var list  = List[String]()
 
@@ -93,12 +155,6 @@ object ExportBA
     var listHash = dfSecurity.columns.toList
       .filter(x => Seq("hash").exists(y => x.toLowerCase.contains(y.toLowerCase())))
     listHash = listHash.map(_.toLowerCase())
-
-    for (n <- listHash )
-      {
-        println("Elemento del for: " + n)
-      }
-
 
 
     /**
@@ -130,6 +186,14 @@ object ExportBA
 
 
 
+    /**
+     * Metodo para cruzar o hacer Join con los campos Hash por la tabla hive_security
+     * */
+    var count = 0
+    for (n <- listHash)
+      {
+        println("Elemento del for: " + n)
+      }
 
 
 
@@ -137,6 +201,24 @@ object ExportBA
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    val endTimeMillis = System.currentTimeMillis()
+    val durationSeconds = (endTimeMillis - startTimeMillis) / 1000
+    println("El tiempo empleado en Segundos es: " + durationSeconds +"sg")
 
   }
 
