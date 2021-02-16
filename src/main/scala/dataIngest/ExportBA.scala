@@ -82,6 +82,7 @@ object ExportBA
                 .option("charset", "UTF-8")
                 .option("header", "true")
                 .mode("overwrite")
+                //.option("codec", "gzip")   -- para comprimir el archivo en formato gzip
                 .save(s"output/csv/table_security_$fecha/")
           } else {
             println("La cantidad de registros son: " + df.count())
@@ -92,8 +93,6 @@ object ExportBA
             println(e)
         }
       }
-
-
 
 
     /**
@@ -127,7 +126,7 @@ object ExportBA
     /**
      * Llamamos al metodo de guardar en formato Parquet
      * */
-      saveAsParquet(dfEmpty, fecha)
+      saveAsParquet(dfSecurity, fecha)
 
     /**
      * Llamamos al metodo de guardar en formato CSV
@@ -180,40 +179,6 @@ object ExportBA
     val dffilter = dfColumns.filter($"value" rlike "hash_*")
     dffilter.show(false)
     println(dffilter.count())
-
-
-
-
-
-
-    /**
-     * Metodo para cruzar o hacer Join con los campos Hash por la tabla hive_security
-     * */
-    var count = 0
-    for (n <- listHash)
-      {
-        println("Elemento del for: " + n)
-      }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     val endTimeMillis = System.currentTimeMillis()
