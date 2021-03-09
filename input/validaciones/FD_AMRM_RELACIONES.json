@@ -1,0 +1,813 @@
+{
+    "type": "struct",
+    "fields": [
+        {
+            "name": "amrm_llave",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "campo llave de la tabla conformado por los campos amrm_org_key y amrm_rel_nbr_key"
+            }
+        },
+        {
+            "name": "amrm_org_key",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "número de identificación de la organización asociada a la relacion"
+            }
+        },
+        {
+            "name": "amrm_rel_nbr_key",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero de identificacion de la relacion"
+            }
+        },
+        {
+            "name": "amrm_date_last_maint",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {
+                "comment": "ultima fecha de mantenimiento al registro de relacion"
+            }
+        },
+        {
+            "name": "amrm_status",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "estado de la relacion"
+            }
+        },
+        {
+            "name": "amrm_customer_org",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "número de identificación de la organización del cliente asociada a la relacion"
+            }
+        },
+        {
+            "name": "amrm_customer_nbr",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "número de identificación del cliente asociada a la relacion"
+            }
+        },
+        {
+            "name": "amrm_credit_limit",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "limite del credito para la relacion, cual incluye todas las cuentas subordinadas en la relacion"
+            }
+        },
+        {
+            "name": "amrm_credit_avail",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad de credito actualmente disponible para ser asignado a las cuentas subordinadas en la relacion. el valor representa el limite del credito de la relacion menos cualquier limite del credito ya asignado para las cuentas subordinadas dentro de la relacion"
+            }
+        },
+        {
+            "name": "amrm_primary_acct",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero de cuenta de la cuenta primaria"
+            }
+        },
+        {
+            "name": "amrm_stmt_def_bill_bal",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "saldo total de facturacion diferida para todas las cuentas subordinatas consolidadas dentro de la relacion"
+            }
+        },
+        {
+            "name": "amrm_stmt_tot_pmt_due",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de pago para la relacion, incluyendo el pago actual debido y el total pasado debido. esta cantidad es la suma de la cantidad total de pago debida para todas las cuentas subordinadas consolidadas dentro de la relacion"
+            }
+        },
+        {
+            "name": "amrm_stmt_pmt_due_date",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {
+                "comment": "fecha de vencimiento del pago de la relación"
+            }
+        },
+        {
+            "name": "amrm_nbr_pmt_ctd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de pagos para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_amt_pmt_ctd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de pagos para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_pmt_ytd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de pagos para la relacion desde el inicio del año a la actual fecha"
+            }
+        },
+        {
+            "name": "amrm_amt_pmt_ytd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de pagos para la relacion desde el inicio del año a la actual fecha"
+            }
+        },
+        {
+            "name": "amrm_nbr_pmt_ltd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de pagos desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_amt_pmt_ltd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de pagos desde el inicio de la ralacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_int_ctd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de transacciones de interes para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_amt_int_ctd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de intereses para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_int_ytd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de transacciones de interes para la relacion desde el inicio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_amt_int_ytd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de intereses para la relacion desde el inicio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_nbr_int_ltd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de transacciones de interes desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_amt_int_ltd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de intereses desde el inicio de la relacion "
+            }
+        },
+        {
+            "name": "amrm_nbr_late_fee_ctd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos por pagos atrasados para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_amt_late_fee_ctd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos por pagos atrasados para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_late_fee_ytd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos por pagos atrasados desde el incio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_amt_late_fee_ytd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos por pagos atrasados para la relacion desde el incio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_nbr_late_fee_ltd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos por pagos atrasados desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_amt_late_fee_ltd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos por pagos atrasados desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_nsf_fee_ctd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos de no suficientes fondos para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_amt_nsf_fee_ctd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos de no suficientes fondos para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_nsf_fee_ytd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos de no suficientes fondos para la relacion desde el inicio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_amt_nsf_fee_ytd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos de no suficientes fondos para la relacion desde el inicio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_nbr_nsf_fee_ltd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos de no suficientes fondos desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_amt_nsf_fee_ltd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos de no suficientes fondos desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_card_fee_ctd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos de tarjeta para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_amt_card_fee_ctd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos de tarjeta para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_card_fee_ytd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos de tarjeta para la relacion desde el inicio del año a la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_amt_card_fee_ytd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos de tarjeta para la relacion desde el inicio del año a la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_nbr_card_fee_ltd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de cargos de tarjeta desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_amt_card_fee_ltd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de cargos de tarjeta desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_purch_ctd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de compras para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_amt_purch_ctd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de compras para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_purch_ytd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de comprar para la relacion desde el inicio de año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_amt_purch_ytd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de compras para la relacion desde el inicio de año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_nbr_purch_ltd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de compras  desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_amt_purch_ltd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de compras desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_cash_ctd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de transacciones de efectivo para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_amt_cash_ctd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de transacciones de efectivo para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_cash_ytd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de transacciones de efectivo para la relacion  desde el inicio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_amt_cash_ytd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de transacciones de efectivo para la relacion desde el inicio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_nbr_cash_ltd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de transacciones de efectivo desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_amt_cash_ltd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de transacciones de efectivo desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_rtns_ctd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de retornos (devoluciones)  para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_amt_rtns_ctd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de retornos (devoluciones)  para la relacion durante el actual ciclo de facturacion"
+            }
+        },
+        {
+            "name": "amrm_nbr_rtns_ytd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de retornos (devoluciones)  para la relacion desde el inicio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_amt_rtns_ytd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de retornos (devoluciones)  para la relacion desde el inicio del año hasta la fecha de hoy"
+            }
+        },
+        {
+            "name": "amrm_nbr_rtns_ltd",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero total de retornos (devoluciones)  desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_amt_rtns_ltd",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad total de retornos (devoluciones)  desde el inicio de la relacion"
+            }
+        },
+        {
+            "name": "amrm_commrcl_flag",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "señal que indica si esta es una relacion de tarjeta comercial"
+            }
+        },
+        {
+            "name": "amrm_corp_cust_nbr",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero de identificacion del registro customer name/address  para la coorporacion para la cual la tarjeta de compras esta asignada"
+            }
+        },
+        {
+            "name": "amrm_corp_id_nbr",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero utilizado para  las relaciones asociadas y herarquias para clientes con tarjetas comerciales coorporativas. si no es requerido el valor por defecto es ceros"
+            }
+        },
+        {
+            "name": "amrm_total_cr_lmt",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "el total de los limites de creditos asignados a todas las cuenteas en la relacion "
+            }
+        },
+        {
+            "name": "amrm_add_status",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "identifica el estado del registro"
+            }
+        },
+        {
+            "name": "amrm_date_status_chg",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {
+                "comment": "identifica la fecha cuando el ultimo estado del registro cambio"
+            }
+        },
+        {
+            "name": "amrm_nbr_sub_accts",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "es el numero de cuentas subordinadas en la relacion, incluyendo la cuenta subordinada designada como la cuenta primaria"
+            }
+        },
+        {
+            "name": "amrm_block_code",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "codigo de bloqueo que esta asociado con la relacion y por defecto el registro account base segment  de las cuentas subordinadas. este campo le permite a ud colocar un codigo de bloqueo sobre una entera relacion con un unica entrada"
+            }
+        },
+        {
+            "name": "amrm_mail_code",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "codigo que indica cual dirrecion es utilizada para enviar la tarjeta y el pin mailer cuando no hay una dirrecion en el registro embosser ."
+            }
+        },
+        {
+            "name": "amrm_billing_cycle",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "establece el ciclo de facturacion de las cuentas subordinadas dentro de la relacion"
+            }
+        },
+        {
+            "name": "amrm_rel_name",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "el nombre de la relacion"
+            }
+        },
+        {
+            "name": "amrm_source_code",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "codigo definido por el usuario asignado para la tarjeta comercial del cliente"
+            }
+        },
+        {
+            "name": "amrm_user_dt1",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {
+                "comment": "campo definido por el usuario, es una fecha"
+            }
+        },
+        {
+            "name": "amrm_user_dt2",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {
+                "comment": "campo definido por el usuario, es una fecha"
+            }
+        },
+        {
+            "name": "amrm_user_amt1",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "campo de cantidad definida por el usuario"
+            }
+        },
+        {
+            "name": "amrm_user_amt2",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "campo de cantidad definida por el usuario"
+            }
+        },
+        {
+            "name": "amrm_user_fld5",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "campo definido por el usuario, "
+            }
+        },
+        {
+            "name": "amrm_user_fld6",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "campo definido por el usuario, "
+            }
+        },
+        {
+            "name": "amrm_vip_status",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "indica si la relacion es para un vip"
+            }
+        },
+        {
+            "name": "amrm_stmt_beg_bal",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "balance de la relacion en el inicio de último ciclo de facturación"
+            }
+        },
+        {
+            "name": "amrm_stmt_db",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad de debitos en el ultimo ciclo de facturacion de la relacion"
+            }
+        },
+        {
+            "name": "amrm_stmt_cr",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "cantidad de creditos en el ultimo ciclo de facturacion de la relacion"
+            }
+        },
+        {
+            "name": "amrm_stmt_end_bal",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "sumatoria de los balances finales de todos los consolidados de las cuentas subordinadas de la relacion"
+            }
+        },
+        {
+            "name": "amrm_stmt_tot_past_due",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "antidad total de mora para la relación"
+            }
+        },
+        {
+            "name": "amrm_delinquency_level",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "nivel de delincuencia para la relacion"
+            }
+        },
+        {
+            "name": "amrm_otb_cash_balance",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "saldo actual de avances"
+            }
+        },
+        {
+            "name": "amrm_otb_cash_outst_auths",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "suma de las autorizaciones pendientes de todas las cuentas subordinadas en la relacion"
+            }
+        },
+        {
+            "name": "amrm_otb_memo_db_amt",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "suma de lo memos debitos pendientes de todas las cuentas subordinadas en la relacion"
+            }
+        },
+        {
+            "name": "amrm_otb_memo_cr_amt",
+            "type": "decimal(20,2)",
+            "nullable": true,
+            "metadata": {
+                "comment": "suma de lo memos creadito pendientes de todas las cuentas subordinadas en la relacion"
+            }
+        },
+        {
+            "name": "amrm_billing_lvl",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "billing level de la relacion"
+            }
+        },
+        {
+            "name": "amrm_stmt_type",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "codigo que determina el nivel de detalle en que las declaraciones son producidas"
+            }
+        },
+        {
+            "name": "reamrm_cyc_due_las_mai_date",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {
+                "comment": "la fecha del ultimo mantenimiento a la relacion"
+            }
+        },
+        {
+            "name": "reamrm_nbr_fee_actv_accts",
+            "type": "decimal(6,0)",
+            "nullable": true,
+            "metadata": {
+                "comment": "numero de cuentas para la cual el cargo esta activo"
+            }
+        },
+        {
+            "name": "reamrm_billing_cyc_mdfy",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": " "
+            }
+        },
+        {
+            "name": "reamrm_rel_acct_type",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": " "
+            }
+        },
+        {
+            "name": "amrm_fecha_procesamiento",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {
+                "comment": "fecha en la que se procesaron los datos"
+            }
+        },
+        {
+            "name": "amrm_fecha_poblamiento",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {
+                "comment": "fecha poblamiento de datos"
+            }
+        },
+        {
+            "name": "amrm_periodo",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "periodo, año y mes"
+            }
+        },
+        {
+            "name": "amrm_dia",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "dia poblamiento"
+            }
+        },
+        {
+            "name": "amrm_fin_mes",
+            "type": "string",
+            "nullable": true,
+            "metadata": {
+                "comment": "indicador fin de mes"
+            }
+        }
+    ]
+}

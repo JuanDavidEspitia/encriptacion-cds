@@ -181,6 +181,26 @@ object ExportBA
     println(dffilter.count())
 
 
+
+    /**
+     * Lectura de una rchivo Json
+     * */
+      val pathJson = "input/validaciones/FD_AMRM_RELACIONES.json"
+      val dfJson =  spark.read
+        .option("multiline", "true")
+        .json(pathJson)
+       dfJson.printSchema()
+       dfJson.show()
+
+
+
+
+
+
+
+
+
+
     val endTimeMillis = System.currentTimeMillis()
     val durationSeconds = (endTimeMillis - startTimeMillis) / 1000
     println("El tiempo empleado en Segundos es: " + durationSeconds +"sg")
